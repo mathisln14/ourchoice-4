@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runner One - Our Choice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="images/logo.png" alt="Our Choice Logo" class="logo"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cart.html">Panier <span id="cart-count">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="product-page">
+    <div class="product-images">
+      <img id="main-image" src="images/chaussure blanche.png.webp" alt="Runner One">
+      <div class="thumbnails">
+        <img src="images/f1.png.webp" onclick="changeImage(this.src)" alt="Vue 1">
+        <img src="images/f2.png.webp" onclick="changeImage(this.src)" alt="Vue 2">
+        <img src="images/f3.png.webp" onclick="changeImage(this.src)" alt="Vue 3">
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h1>Runner One</h1>
+      <p class="price">89,90€</p>
+      <label for="size">Pointure :</label>
+      <select id="size">
+        <option value="">Sélectionnez</option>
+        <option>36</option>
+        <option>37</option>
+        <option>38</option>
+        <option>39</option>
+        <option>40</option>
+        <option>41</option>
+      </select>
+      <button onclick="addRunnerToCart()">Ajouter au panier</button>
+    </div>
+  </main>
+
+  <script>
+    function changeImage(src) {
+      document.getElementById('main-image').src = src;
+    }
+
+    function addRunnerToCart() {
+      const size = document.getElementById('size').value;
+      if (!size) {
+        alert("Veuillez choisir une pointure.");
+        return;
+      }
+      const product = `Runner One (taille ${size})`;
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById('cart-count').textContent = cart.length;
+      alert("Produit ajouté au panier !");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = cart.length;
+    });
+  </script>
+</body>
+</html>

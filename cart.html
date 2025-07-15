@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panier - Our Choice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="images/logo.png" alt="Our Choice Logo" class="logo"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cart.html">Panier <span id="cart-count">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cart-page">
+    <h1>Votre panier</h1>
+    <ul id="cart-items"></ul>
+    <p id="empty">Votre panier est vide.</p>
+    <button onclick="clearCart()">Vider le panier</button>
+  </main>
+
+  <script>
+    function displayCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const list = document.getElementById('cart-items');
+      const emptyText = document.getElementById('empty');
+      const count = document.getElementById('cart-count');
+
+      count.textContent = cart.length;
+
+      if (cart.length === 0) {
+        emptyText.style.display = 'block';
+        return;
+      } else {
+        emptyText.style.display = 'none';
+      }
+
+      list.innerHTML = "";
+      cart.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      displayCart();
+    }
+
+    document.addEventListener('DOMContentLoaded', displayCart);
+  </script>
+</body>
+</html>
