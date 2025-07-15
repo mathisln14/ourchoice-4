@@ -1,1 +1,39 @@
-PLACEHOLDER - Le contenu actuel est dans le canvas, à exporter manuellement.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Choice - Boutique</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Our Choice Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="#products">Produits</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="cart.html">Panier <span id="cart-count">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>The Truth of Hers', Truth Us, Trust You</h1>
+      <p>Des vêtements et chaussures techniques qui célèbrent le mouvement, la confiance et la liberté.</p>
+      <a href="#products" class="cta">Découvrir nos produits</a>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Notre collection</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="images/tshirt.jpg" alt="T-shirt rose">
+        <h3>Haut de sport "Empower Tee"</h3>
+        <p>29,90€</p>
+        <button onclick="addToCart('Empower Tee')">Ajouter au
